@@ -3,23 +3,23 @@ entries:
   odd-adapter:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-07-27T19:58:40.985778548Z"
+    created: "2021-07-27T20:30:16.398890217Z"
     description: A Helm chart for Kubernetes
-    digest: 745f97870e889799e517037e366dc503574c7ca57715e33ef60905f88c338c90
+    digest: 02a30ea2622fd73e3558a467b80cd644fec8fcaad6376cf4d1f6b55e21b29b6b
     name: odd-adapter
     type: application
     urls:
-    - https://github.com/opendatadiscovery/charts/releases/download/odd-adapter-0.2.1/odd-adapter-0.2.1.tgz
-    version: 0.2.1
+    - https://github.com/opendatadiscovery/charts/releases/download/odd-adapter-0.1.1/odd-adapter-0.1.1.tgz
+    version: 0.1.1
   odd-platform:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-07-27T19:58:41.132660812Z"
+    created: "2021-07-27T20:30:16.51178508Z"
     description: A Helm chart for Kubernetes
-    digest: de0f19147d1735648ed2a31be03df2da0a6aa249343560b8fce68ea4d4d9875e
+    digest: fa2806d126d95683b7bc10efd85ad223c91444f206944ac1b2443bd7ebd16ce0
     name: odd-platform
     type: application
     urls:
-    - https://github.com/opendatadiscovery/charts/releases/download/odd-platform-0.2.1/odd-platform-0.2.1.tgz
-    version: 0.2.1
-generated: "2021-07-27T19:58:41.132665112Z"
+    - https://github.com/opendatadiscovery/charts/releases/download/odd-platform-0.1.1/odd-platform-0.1.1.tgz
+    version: 0.1.1
+generated: "2021-07-27T20:30:16.511792481Z"
