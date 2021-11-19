@@ -46,6 +46,9 @@ config:
 #    value:
 #  - name: WAREHOUSE
 #    value:
+  envFrom:
+  - secretRef:
+      name: db-secret
 
 service:
   type: ClusterIP
