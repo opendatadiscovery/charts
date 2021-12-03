@@ -7,9 +7,11 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    {{- range .Values.service.ports }}
+    - port: {{ .port }}
+      targetPort: {{ .targetPort }}
       protocol: TCP
-      name: http
+      name: {{ .name }}
+    {{- end }}
   selector:
     {{- include "odd-adapter.selectorLabels" . | nindent 4 }}

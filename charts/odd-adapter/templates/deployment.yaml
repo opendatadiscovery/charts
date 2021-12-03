@@ -30,11 +30,13 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}{{- include "odd-adapter.revision_delimeter" . -}}{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}          
           ports:
-            - name: http
-              containerPort: 8080
+          {{- range .Values.service.ports }}          
+            - name: {{ .name }}
+              containerPort: {{ .targetPort }}
               protocol: TCP
+          {{- end }}    
           {{- if .Values.config -}}
           {{ toYaml .Values.config | nindent 10 }}
           {{- end }}
