@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "odd-tracing-gateway.labels" . | nindent 4 }}
 spec:
-  type: ClusterIp
+  type: ClusterIP
   ports:
     - port: 8080
       targetPort: 8080
