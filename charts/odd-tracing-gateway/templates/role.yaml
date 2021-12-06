@@ -7,6 +7,6 @@ metadata:
     {{- include "odd-tracing-gateway.labels" . | nindent 4 }}
 rules:
   - apiGroups: [""]
-    resources: ["pods"]
+    resources: ["pods", "namespaces"]
     verbs: ["get", "watch", "list"]
 {{- end }}
