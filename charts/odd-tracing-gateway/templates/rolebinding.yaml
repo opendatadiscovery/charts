@@ -1,0 +1,15 @@
+{{- if .Values.serviceAccount.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .Values.serviceAccount.roleName }}
+  labels:
+    {{- include "odd-tracing-gateway.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ .Values.serviceAccount.roleName }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "odd-tracing-gateway.serviceAccountName" . }}
+{{- end }}
