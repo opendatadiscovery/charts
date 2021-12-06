@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "odd-tracing-gateway.fullname" . }}
+  labels:
+    {{- include "odd-tracing-gateway.labels" . | nindent 4 }}
+spec:
+  type: ClusterIp
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+    - port: 9090
+      targetPort: 9090
+      protocol: TCP
+      name: grpc      
+  selector:
+    {{- include "odd-tracing-gateway.selectorLabels" . | nindent 4 }}
