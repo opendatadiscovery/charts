@@ -14,6 +14,6 @@ spec:
     - port: 9090
       targetPort: 9090
       protocol: TCP
-      name: http      
+      name: grpc      
   selector:
     {{- include "odd-tracing-gateway.selectorLabels" . | nindent 4 }}
