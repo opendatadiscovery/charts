@@ -46,6 +46,16 @@ entries:
   odd-tracing-gateway:
   - apiVersion: v2
     appVersion: latest
+    created: "2021-12-06T15:31:19.008743438Z"
+    description: A Helm chart for Kubernetes
+    digest: 44f0a7a37e459124ea485a8083fd675fe3e9c342e21fccdd53958039e447a7dc
+    name: odd-tracing-gateway
+    type: application
+    urls:
+    - https://github.com/opendatadiscovery/charts/releases/download/odd-tracing-gateway-0.1.6/odd-tracing-gateway-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: latest
     created: "2021-12-06T15:16:31.580484831Z"
     description: A Helm chart for Kubernetes
     digest: ca0df098f4766f43490160248d81d64c868abb2d3ac8eb85846ba9e5e42eff81
@@ -84,4 +94,4 @@ entries:
     urls:
     - https://github.com/opendatadiscovery/charts/releases/download/odd-tracing-gateway-0.1.2/odd-tracing-gateway-0.1.2.tgz
     version: 0.1.2
-generated: "2021-12-06T15:16:31.580507131Z"
+generated: "2021-12-06T15:31:19.008764138Z"
