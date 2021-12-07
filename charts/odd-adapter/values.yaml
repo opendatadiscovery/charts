@@ -14,12 +14,15 @@ config:
 #    value:
 #  - name: WAREHOUSE
 #    value:
+  envFrom:
+  - secretRef:
+      name: db-secret
 
 image:
-  repository: ghcr.io/opendatadiscovery/adapters/odd-glue-adapter
+  repository: ghcr.io/opendatadiscovery/adapters/odd-mysql-adapter
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "0.1.2"
 
 imagePullSecrets: []
 nameOverride: ""
