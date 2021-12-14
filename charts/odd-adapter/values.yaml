@@ -16,7 +16,7 @@ config:
 #    value:
   envFrom:
   - secretRef:
-      name: db-secret
+      name: odd-db-secret
 
 image:
   repository: ghcr.io/opendatadiscovery/adapters/odd-mysql-adapter
