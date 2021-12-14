@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/opendatadiscovery/odd-platform
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "0.2.5"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -48,7 +48,7 @@ config:
 #    value:
   envFrom:
   - secretRef:
-      name: db-secret
+      name: odd-db-secret
 
 service:
   type: ClusterIP
