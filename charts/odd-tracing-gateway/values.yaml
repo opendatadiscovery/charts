@@ -1,4 +1,4 @@
-# Default values for odd-adapter.
+# Default values for odd-tracing-gateway.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -14,15 +14,12 @@ config:
 #    value:
 #  - name: WAREHOUSE
 #    value:
-  envFrom:
-  - secretRef:
-      name: odd-db-secret
 
 image:
-  repository: ghcr.io/opendatadiscovery/adapters/odd-mysql-adapter
+  repository: ghcr.io/opendatadiscovery/odd-tracing-gateway
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.1.2"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -35,7 +32,8 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: odd-tracing-gateway
+  roleName: odd-tracing-gateway
 
 podAnnotations: {}
 
@@ -54,11 +52,6 @@ healthchecks:
   enabled: true
 
 service:
-  ports:
-    - type: ClusterIP
-      port: 8080
-      targetPort: 8080
-      name: http
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

@@ -1,16 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "odd-platform-puller.fullname" . }}
+  name: {{ include "odd-tracing-gateway.fullname" . }}
   labels:
-    {{- include "odd-platform-puller.labels" . | nindent 4 }}
+    {{- include "odd-tracing-gateway.labels" . | nindent 4 }}
 spec:
-{{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-{{- end }}
   selector:
     matchLabels:
-      {{- include "odd-platform-puller.selectorLabels" . | nindent 6 }}
+      {{- include "odd-tracing-gateway.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,25 +16,32 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "odd-platform-puller.selectorLabels" . | nindent 8 }}
+        {{- include "odd-tracing-gateway.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "odd-platform-puller.serviceAccountName" . }}
+      serviceAccountName: {{ include "odd-tracing-gateway.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.image.repository }}{{- include "odd-tracing-gateway.revision_delimeter" . -}}{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}          
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8080
               protocol: TCP
+            - name: grpc
+              containerPort: 9090
+              protocol: TCP              
+          {{- if .Values.config -}}
+          {{ toYaml .Values.config | nindent 10 }}
+          {{- end }}
+          {{- if not .Values.healthchecks.enabled }}
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -45,11 +50,9 @@ spec:
             httpGet:
               path: /actuator/health
               port: http
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.config -}}
-          {{ toYaml .Values.config | nindent 10 }}
-          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
