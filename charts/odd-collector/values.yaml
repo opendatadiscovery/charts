@@ -51,3 +51,16 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+collectorConfig:
+  default_pulling_interval: 10
+  token: ""
+  platform_host_url: "http://odd-platform"
+  plugins: []
+  # - type: redshift
+  #   name: test
+  #   host: ""
+  #   port: 0
+  #   database: ""
+  #   user: ""
+  #   password: ""
