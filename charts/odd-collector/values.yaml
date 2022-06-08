@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/opendatadiscovery/odd-collector-aws
+  repository: ghcr.io/opendatadiscovery/odd-collector
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -26,7 +26,12 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-env: []
+env:
+  - name: "POSTGRES_PASSWORD"
+    valueFrom:
+      secretKeyRef:
+        key: POSTGRES_PASSWORD
+        name: base-secret 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -52,15 +57,22 @@ tolerations: []
 
 affinity: {}
 
-collectorConfig:
+collectorConfig: |
   default_pulling_interval: 10
   token: ""
-  platform_host_url: "http://odd-platform"
-  plugins: []
-  # - type: redshift
-  #   name: test
-  #   host: ""
-  #   port: 0
-  #   database: ""
-  #   user: ""
-  #   password: ""
+  platform_host_url: "http://odd"
+  plugins:
+    - type: postgresql
+      name: test_postgresql_collector
+      host: "localhost"
+      port: 5432
+      database: "some_database_name"
+      user: "some_user_name"
+      password: !ENV ${POSTGRES_PASSWORD}
+    - type: mysql
+      name: test_mysql_collector
+      host: "localhost"
+      port: 3306
+      database: "some_database_name"
+      user: "some_user_name"
+      password: "some_password"
