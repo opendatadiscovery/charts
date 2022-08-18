@@ -1,6 +1,6 @@
 apiVersion: v2
-name: odd-collector
+appVersion: latest
 description: A Helm chart for any odd-collector compatible deployments
+name: odd-collector
 type: application
 version: 0.1.3
-appVersion: 0.1.1
