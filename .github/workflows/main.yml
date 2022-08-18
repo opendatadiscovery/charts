@@ -1,8 +1,8 @@
 name: CI
 
 on:
-  push:
-    branches: [ master ]
+#  push:
+#    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -13,6 +13,7 @@ jobs:
       uses: actions/checkout@v2.3.4
       with:
           fetch-depth: 0
+          token: "${{ secrets.GITHUB_TOKEN }}"
     - name: Configure Git
       run: |
         git config user.name "$GITHUB_ACTOR"
@@ -20,7 +21,26 @@ jobs:
     - name: Install Helm
       uses: azure/setup-helm@v1
       with:
-        version: v3.4.0
+        version: v3.9.3
+    - name: Bump Helm Chart Version
+      run: |
+        #!/bin/bash
+        python3 -m pip install pybump
+        charts=$(ls -d charts/*/ | awk -F/ '{print $2}')
+        for chart in $charts;
+        do
+          chart_ver=$(yq '.version' charts/$chart/Chart.yaml);
+          chart_changes="$(git diff --name-only HEAD $chart-$chart_ver -- charts/$chart)";
+          if [ ! -z "$chart_changes" ];
+          then
+            pybump bump --file charts/$chart/Chart.yaml --level patch --quiet
+            new_version=$(yq '.version' charts/$chart/Chart.yaml )
+            echo $chart-$new_version
+            git add charts/$chart/Chart.yaml
+            git commit -m "Bump $chart version $new_version"
+            git push
+          fi
+        done
     - name: Helm Chart Releaser
       uses: helm/chart-releaser-action@v1.2.1
       env:
