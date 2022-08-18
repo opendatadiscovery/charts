@@ -25,21 +25,17 @@ jobs:
     - name: Bump Helm Chart Version
       run: |
         #!/bin/bash
-        set -x
         python3 -m pip install pybump
         charts=$(ls -d charts/*/ | awk -F/ '{print $2}')
-        echo $charts
         for chart in $charts;
         do
-          echo $chart
           chart_ver=$(yq '.version' charts/$chart/Chart.yaml);
           chart_changes="$(git diff --name-only HEAD $chart-$chart_ver -- charts/$chart)";
           if [ ! -z "$chart_changes" ];
           then
             pybump bump --file charts/$chart/Chart.yaml --level patch --quiet
             new_version=$(yq '.version' charts/$chart/Chart.yaml )
-            echo $new_version
-            echo "git push"
+            echo $chart-$new_version
             git add charts/$chart/Chart.yaml
             git commit -m "Bump $chart version $new_version"
             git push
