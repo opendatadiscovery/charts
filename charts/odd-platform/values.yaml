@@ -38,14 +38,23 @@ securityContext: {}
 
 config:
 #  env:
-#  - name: USERNAME
-#    value:
-#  - name: PASSWORD
-#    value:
-#  - name: ACCOUNT_NAME
-#    value:
-#  - name: WAREHOUSE
-#    value:
+#  - name: AUTH_TYPE
+#    value: OAUTH2
+#  - name: MANAGEMENT_HEALTH_REDIS_ENABLED
+#    value: "false"
+#  - name: OTEL_INSTRUMENTATION_COMMON_DB_STATEMENT_SANITIZER_ENABLED
+#    value: "false"
+#  - name: SPRING_DATASOURCE_URL
+#    value: jdbc:postgresql://hostname:5432/odc
+#  - name: SPRING_DATASOURCE_USERNAME
+#    value: dev
+#  yaml:
+#    spring:
+#      datasource:
+#        url: jdbc:postgresql://127.0.0.1:5432/odd-platform
+#        username: odd-platform
+#        password: odd-platform-password
+
 
 service:
   type: ClusterIP

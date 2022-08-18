@@ -45,9 +45,21 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.config }}
-          {{ toYaml .Values.config | nindent 10 }}
+          {{- if (.Values.config).env }}
+          env:
+            {{- toYaml .Values.config.env | nindent 12 }}
           {{- end }}
+          volumeMounts:
+            {{- if (.Values.config).yaml }}
+            - name: odd-platform-application-conf
+              mountPath: /app/config/
+            {{- end }}
+      volumes:
+        {{- if (.Values.config).env }}
+        - name: odd-platform-application-conf
+          configMap:
+            name: {{ include "odd-platform.fullname" . }}-application-conf
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
