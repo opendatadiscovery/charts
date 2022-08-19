@@ -55,7 +55,7 @@ spec:
               mountPath: /app/config/
             {{- end }}
       volumes:
-        {{- if (.Values.config).env }}
+        {{- if (.Values.config).yaml }}
         - name: odd-platform-application-conf
           configMap:
             name: {{ include "odd-platform.fullname" . }}-application-conf
