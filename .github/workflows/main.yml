@@ -22,17 +22,26 @@ jobs:
       uses: azure/setup-helm@v1
       with:
         version: v3.9.3
+    - name: Setup Kubeval
+      uses: lra/setup-kubeval@v1.0.1
     - name: Bump Helm Chart Version
       run: |
         #!/bin/bash
         python3 -m pip install pybump
         charts=$(ls -d charts/*/ | awk -F/ '{print $2}')
+        K8S_VERSIONS=$(git ls-remote --refs --tags https://github.com/kubernetes/kubernetes.git | cut -d/ -f3 | grep -e '^v1\.[0-9]\{2\}\.[0]\{1,2\}$' | grep -v -e  '^v1\.1[0-7]\{1\}' | cut -c2-)
+
         for chart in $charts;
         do
           chart_ver=$(yq '.version' charts/$chart/Chart.yaml);
           chart_changes="$(git diff --name-only HEAD $chart-$chart_ver -- charts/$chart)";
           if [ ! -z "$chart_changes" ];
           then
+            for version in $K8S_VERSIONS
+            do
+              echo $version;
+              helm template --kube-version $version --set ingress.enabled=true charts/$chart -f charts/$chart/values.yaml | kubeval --additional-schema-locations https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master --strict -v $version;
+            done
             pybump bump --file charts/$chart/Chart.yaml --level patch --quiet
             new_version=$(yq '.version' charts/$chart/Chart.yaml )
             echo $chart-$new_version
