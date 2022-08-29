@@ -61,6 +61,7 @@ tolerations: []
 
 affinity: {}
 
+### Consider to use toYaml .collectorConfig
 collectorConfig: |
   default_pulling_interval: 10
   token: ""
