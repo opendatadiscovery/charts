@@ -21,7 +21,7 @@ To uninstall the chart:
 helm delete my-<chart-name>
 ```
 ## Example
-As we use the single chart for all our adapters, need to pass option to the deployment about the wanted adapter, for example, to install [odd-glue-adapter](https://github.com/opendatadiscovery/odd-glue-adapter):
+We use odd-collector as our main service to gathers metadata from all of yours data sources, for example, to install [odd-collector](https://github.com/opendatadiscovery/odd-collector):
 ``` bash
-helm install odd-glue-adapter opendatadiscovery/odd-adapter --set nameOverride=odd-glue-adapter --set image.repository=ghcr.io/opendatadiscovery/adapters/odd-glue-adapter
+helm install odd-collector opendatadiscovery/odd-collector --set nameOverride=odd-collector --set image.repository=ghcr.io/opendatadiscovery/odd-collector
 ```
