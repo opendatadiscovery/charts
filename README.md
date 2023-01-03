@@ -4,7 +4,7 @@
 helm repo add opendatadiscovery https://opendatadiscovery.github.io/charts/
 ```
 
-To install [odd-glue-adapter](https://github.com/opendatadiscovery/odd-glue-adapter):
+To install [odd-collector](https://github.com/opendatadiscovery/odd-collector):
 ``` bash
-helm install odd-glue-adapter opendatadiscovery/odd-adapter --set nameOverride=odd-glue-adapter --set image.repository=opendatadiscovery/odd-glue-adapter
+helm install odd-collector opendatadiscovery/odd-adapter --set nameOverride=odd-collector --set image.repository=ghcr.io/opendatadiscovery/odd-collector
 ```
