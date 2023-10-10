@@ -4,7 +4,7 @@ metadata:
   name: {{ include "odd-platform.fullname" . }}
   {{- with .Values.service.annotations }}
   annotations:
-      {{- toYaml . | nindent 6 }}
+    {{- toYaml . | nindent 6 }}
   {{- end }}
   labels:
     {{- include "odd-platform.labels" . | nindent 4 }}
