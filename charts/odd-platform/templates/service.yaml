@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "odd-platform.fullname" . }}
   {{- with .Values.service.annotations }}
-    annotations:
+  annotations:
       {{- toYaml . | nindent 6 }}
   {{- end }}
   labels:
