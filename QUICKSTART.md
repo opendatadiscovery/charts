@@ -136,10 +136,10 @@ To do this, obtain the hostname of your Load Balancer and use it to establish a 
 
 If the setup is successful, you will be able to access the platform demo page directly from your web browser.
 
-*With the versions of the platform >= 0.18.0 you could get acquainted with the API of the platform by simply visiting [Swagger UI](/api/v3/webjars/swagger-ui/index.html). For example, have a look at [this](http://a1e67ff8befc54b75969f9834a6e329a-948212351.us-east-1.elb.amazonaws.com/api/v3/webjars/swagger-ui/index.html)*.
+*With the versions of the platform >= 0.18.0 you could get acquainted with the API of the platform by simply visiting [Swagger UI](/api/v3/webjars/swagger-ui/index.html). For example, if for Load Balancer host `a1e67ff8befc54b75969f9834a6e329a-948212351` we could visit `http://a1e67ff8befc54b75969f9834a6e329a-948212351.us-east-1.elb.amazonaws.com/api/v3/webjars/swagger-ui/index.html`.*
 
 ## Important Note!
-In this setup there are no certificates created to use encrypted communication. Be aware that only http protocol is supported in this setup. For example, have a look at [this](http://a1e67ff8befc54b75969f9834a6e329a-948212351.us-east-1.elb.amazonaws.com/). This protocol is not secure, please, do not send any sensitive information via this connection! Demonstration purpose only! For production cases please configure HTTPS Protocol.
+In this setup there are no certificates created to use encrypted communication. Be aware that only http protocol is supported in this setup. For example, `http://a1e67ff8befc54b75969f9834a6e329a-948212351.us-east-1.elb.amazonaws.com/` This protocol is not secure, please, do not send any sensitive information via this connection! Demonstration purpose only! For production cases please configure HTTPS Protocol.
 
 ## How to delete Cloudformation Stack?
 Deletion starts with uninstalling the platform
