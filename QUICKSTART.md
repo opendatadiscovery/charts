@@ -19,7 +19,7 @@ This environment consists of:
 * Deploy and run Open data Discovery (ODD)
 
 ## Start an EKS Cluster
-* **Step 1**. Click on Quick Launch and you’ll be redirected to Cloud Formation Stack on AWS the account where you are logged in. Please, check that you are in one of the supported regions: us-west-2, us-west-1, us-east-2, us-east-1.
+* **Step 1**. Click on [Quick lunch](https://us-east-2.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://odd-ct-templates.s3.us-east-2.amazonaws.com/odd_cloudformation.yaml&stackName=ODD-EKS) and you’ll be redirected to Cloud Formation Stack on AWS the account where you are logged in. Please, check that you are in one of the supported regions: us-west-2, us-west-1, us-east-2, us-east-1.
 
 * **Step 2**. You’ll be directed through several setup stages, including following ones:
 
