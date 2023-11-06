@@ -63,11 +63,11 @@ affinity: {}
 
 collectorConfig: |
   default_pulling_interval: 10
-  token: ""
+  token: "odd-token"
   platform_host_url: "http://odd-platform"
   plugins:
     - type: postgresql
-      name: test
+      name: odd-test
       host: "postgresql"
       port: 5432
       database: "odd-platform"
