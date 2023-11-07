@@ -1,0 +1,82 @@
+# Default values for odd-collector.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/opendatadiscovery/odd-collector
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  {}
+  # fsGroup: 2000
+
+securityContext:
+  {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+env: []
+
+existingSecretsForEnv: ""
+passwordSecretsEnvs:
+  {}
+  # POSTGRES_PASSWORD: "overridebyhelmsetvalue"
+
+resources:
+  {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+collectorConfig: |
+  default_pulling_interval: 10
+  token: "odd-token"
+  platform_host_url: "http://odd-platform"
+  plugins:
+    - type: postgresql
+      name: odd-test
+      host: "postgresql"
+      port: 5432
+      database: "odd-platform"
+      user: "postgres"
+      password: ${POSTGRES_PASSWORD}
+#    - type: mysql
+#      name: test_mysql_collector
+#      host: "localhost"
+#      port: 3306
+#      database: "some_database_name"
+#      user: "some_user_name"
+#      password: "some_password"
