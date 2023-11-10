@@ -167,7 +167,7 @@ This can be accomplished by executing the following commands in the specified or
 
 `helm repo add opendatadiscovery https://opendatadiscovery.github.io/charts`
 
-`wget https://raw.githubusercontent.com/opendatadiscovery/charts/master/cloudformation/collector-values.yaml`
+`wget https://raw.githubusercontent.com/opendatadiscovery/charts/main/cloudformation/collector-values.yaml`
 
 **Note:** you need to replace the **Generated token** part in following command with the token you have copied earlier and run it.
 
