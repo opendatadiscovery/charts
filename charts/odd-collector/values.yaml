@@ -16,27 +16,27 @@ fullnameOverride: ""
 
 podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-env:
-  - name: "POSTGRES_PASSWORD"
-    valueFrom:
-      secretKeyRef:
-        key: POSTGRES_PASSWORD
-        name: odd-collector-base-secret
+env: []
 
+existingSecretsForEnv: ""
 passwordSecretsEnvs:
-  POSTGRES_PASSWORD: "overridebyhelmsetvalue"
+  {}
+  # POSTGRES_PASSWORD: "overridebyhelmsetvalue"
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -73,10 +73,10 @@ collectorConfig: |
       database: "some_database_name"
       user: "some_user_name"
       password: !ENV ${POSTGRES_PASSWORD}
-    - type: mysql
-      name: test_mysql_collector
-      host: "localhost"
-      port: 3306
-      database: "some_database_name"
-      user: "some_user_name"
-      password: "some_password"
+#    - type: mysql
+#      name: test_mysql_collector
+#      host: "localhost"
+#      port: 3306
+#      database: "some_database_name"
+#      user: "some_user_name"
+#      password: "some_password"
