@@ -1,0 +1,36 @@
+# Values for odd-quicklaunch.
+
+# Values for the PostgreSQL database
+global:
+  postgresql:
+    auth:
+      postgresPassword:
+      database: "odd-platform"
+  loadBalancerSourceRanges: ""
+  platformServiceType: ""
+
+# List of IP CIDRs in format delimited by comma with allowed inbound traffic
+loadBalancer:
+  loadBalancerSourceRanges: ""
+
+# Values for odd-platform
+odd-platform:
+  # Configuration for the odd-platform
+  # Replace these with actual values required for odd-platform
+  replicaCount: 1
+  image:
+    repository: 709825985650.dkr.ecr.us-east-1.amazonaws.com/provectus/odd
+    pullPolicy: IfNotPresent
+    tag: "0.19.0"
+  service:
+    port: 80
+  config:
+    yaml:
+      spring:
+        datasource:
+          username: postgres
+
+postgresql:
+  primary:
+    persistence:
+      enabled: false

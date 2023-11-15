@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "odd-platform.fullname" . }}-application-conf
+  labels:
+    {{- include "odd-platform.labels" . | nindent 4 }}
+data:
+  application.yml: |-
+    spring:
+      datasource:
+        username: "postgres"
+        password: "{{ .Values.global.postgresql.auth.postgresPassword }}"
+        url: "jdbc:postgresql://odd-quicklaunch-postgresql:5432/odd-platform"
