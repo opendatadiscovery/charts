@@ -24,6 +24,16 @@ entries:
   odd-collector:
   - apiVersion: v2
     appVersion: latest
+    created: "2023-12-14T17:48:34.724824107Z"
+    description: A Helm chart for any odd-collector compatible deployments
+    digest: fb1211f48e2b8e767b50e238060df39c3f70b6d72869e9b6fd2a677b0e61b5f7
+    name: odd-collector
+    type: application
+    urls:
+    - https://github.com/opendatadiscovery/charts/releases/download/odd-collector-0.1.9/odd-collector-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: latest
     created: "2023-12-14T17:37:13.431252604Z"
     description: A Helm chart for any odd-collector compatible deployments
     digest: e39facc2df2eaf602f5e5476a88d7e4edb9232f93679e377abf9fe7614a14793
@@ -285,4 +295,4 @@ entries:
     urls:
     - https://github.com/opendatadiscovery/charts/releases/download/odd-tracing-gateway-0.1.2/odd-tracing-gateway-0.1.2.tgz
     version: 0.1.2
-generated: "2023-12-14T17:37:13.431339626Z"
+generated: "2023-12-14T17:48:34.724908876Z"
