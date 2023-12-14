@@ -25,6 +25,7 @@ serviceAccount:
 
 service:
   annotations: {"eks.amazonaws.com/role-arn": "arn:aws:iam::${ACCOUNT_ID}:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM"}
+  port: 80
 
 podAnnotations: {}
 
