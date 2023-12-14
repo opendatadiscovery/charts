@@ -24,7 +24,7 @@ serviceAccount:
   name: ""
 
 service:
-  annotations: {"eks.amazonaws.com/role-arn": "arn:aws:iam::$ACCOUNT_ID:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM"}
+  annotations: {"eks.amazonaws.com/role-arn": "arn:aws:iam::${ACCOUNT_ID}:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM"}
 
 podAnnotations: {}
 
