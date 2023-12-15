@@ -41,7 +41,7 @@ jobs:
             for version in $K8S_VERSIONS
             do
               echo $version;
-              helm template --kube-version $version --set ingress.enabled=true charts/$chart -f charts/$chart/values.yaml; # | kubeval --additional-schema-locations https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master --strict -v $version;
+              helm template --kube-version $version --set ingress.enabled=true charts/$chart -f charts/$chart/values.yaml | kubeval --additional-schema-locations https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master --strict -v $version;
             done
             pybump bump --file charts/$chart/Chart.yaml --level patch --quiet
             new_version=$(yq '.version' charts/$chart/Chart.yaml )
