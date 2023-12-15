@@ -1,10 +1,10 @@
 apiVersion: v2
 name: odd-quicklaunch
 description: A Helm chart for deploying odd-platform and its PostgreSQL database
-version: 1.2.0
+version: 1.2.1
 appVersion: latest
 
 dependencies:
-  - name: postgresql
-    version: "13.2.9"
-    repository: "https://charts.bitnami.com/bitnami"
+- name: postgresql
+  version: 13.2.9
+  repository: https://charts.bitnami.com/bitnami
