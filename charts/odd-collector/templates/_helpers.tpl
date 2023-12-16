@@ -50,14 +50,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "odd-collector.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "odd-collector.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "odd-collector.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
