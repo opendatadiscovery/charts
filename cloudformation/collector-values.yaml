@@ -62,8 +62,6 @@ tolerations: []
 affinity: {}
 
 collectorConfig: |
-  secrets_backend:
-    provider: "AWSSystemsManagerParameterStore"
   default_pulling_interval: 10
   token: "odd-token"
   platform_host_url: "http://odd-platform"
