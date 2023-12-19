@@ -247,6 +247,19 @@ entries:
   odd-quicklaunch:
   - apiVersion: v2
     appVersion: latest
+    created: "2023-12-19T16:18:38.135799155Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.9
+    description: A Helm chart for deploying odd-platform and its PostgreSQL database
+    digest: 44886301f7aefd2f299ba754189a3f4ae175911c0e4678c53a09d812ca048bc9
+    name: odd-quicklaunch
+    urls:
+    - https://github.com/opendatadiscovery/charts/releases/download/odd-quicklaunch-1.2.2/odd-quicklaunch-1.2.2.tgz
+    version: 1.2.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2023-12-15T20:31:22.001016551Z"
     dependencies:
     - name: postgresql
@@ -319,4 +332,4 @@ entries:
     urls:
     - https://github.com/opendatadiscovery/charts/releases/download/odd-tracing-gateway-0.1.2/odd-tracing-gateway-0.1.2.tgz
     version: 0.1.2
-generated: "2023-12-16T09:48:09.199859971Z"
+generated: "2023-12-19T16:18:38.135884976Z"
