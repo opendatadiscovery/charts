@@ -1,7 +1,7 @@
 apiVersion: v2
 name: odd-quicklaunch
 description: A Helm chart for deploying odd-platform and its PostgreSQL database
-version: 1.2.1
+version: 1.2.2
 appVersion: latest
 
 dependencies:
