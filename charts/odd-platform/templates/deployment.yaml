@@ -45,15 +45,19 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if (.Values.config).env }}
+          {{- if or (.Values.config).env .Values.secret_keys  }}
           env:
+            {{- if or (.Values.config).env }}
             {{- toYaml .Values.config.env | nindent 12 }}
-          {{- end }}
-          volumeMounts:
-            {{- if (.Values.config).yaml }}
-            - name: odd-platform-application-conf
-              mountPath: /app/config/
             {{- end }}
+            {{- range .Values.secret_keys }}
+            - name: {{ .}}
+              valueFrom:
+                secretKeyRef:
+                  name: demo-secret
+                  key: {{ . }}
+            {{- end }}
+          {{- end }}
       volumes:
         {{- if (.Values.config).yaml }}
         - name: odd-platform-application-conf

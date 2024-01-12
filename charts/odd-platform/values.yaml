@@ -37,6 +37,10 @@ securityContext:
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+  
+#secret_keys:
+# - SPRING_DATASOURCE_PASSWORD
+
 
 config:
 #  env:
