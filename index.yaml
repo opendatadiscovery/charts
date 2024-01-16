@@ -125,6 +125,16 @@ entries:
   odd-platform:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-01-16T19:12:11.966107314Z"
+    description: A Helm chart for Kubernetes
+    digest: 2769c586d7830917f4395035f0530980cf388d66b9f18071746b99a82631c174
+    name: odd-platform
+    type: application
+    urls:
+    - https://github.com/opendatadiscovery/charts/releases/download/odd-platform-0.1.9/odd-platform-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: latest
     created: "2023-10-10T11:00:34.810710658Z"
     description: A Helm chart for Kubernetes
     digest: 3513f948c3bc15dfcd9b33544ac6f3ffbd736d0f51d45aef7fe960cd3e12698e
@@ -332,4 +342,4 @@ entries:
     urls:
     - https://github.com/opendatadiscovery/charts/releases/download/odd-tracing-gateway-0.1.2/odd-tracing-gateway-0.1.2.tgz
     version: 0.1.2
-generated: "2023-12-19T16:18:38.135884976Z"
+generated: "2024-01-16T19:12:11.966216859Z"
