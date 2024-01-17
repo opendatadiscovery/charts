@@ -58,6 +58,11 @@ spec:
                   key: {{ . }}
             {{- end }}
           {{- end }}
+          volumeMounts:
+            {{- if (.Values.config).yaml }}
+            - name: odd-platform-application-conf
+              mountPath: /app/config/
+            {{- end }}
       volumes:
         {{- if (.Values.config).yaml }}
         - name: odd-platform-application-conf
