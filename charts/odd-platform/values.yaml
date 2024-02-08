@@ -40,9 +40,15 @@ securityContext:
   
 #secret_keys:
 # - SPRING_DATASOURCE_PASSWORD
-
-
+##extra:
+##  envFrom:
+##   - configMapRef:
+##      name: config_map
+##   - secretRef:
+##      name: secret
+##
 config:
+  
 #  env:
 #  - name: AUTH_TYPE
 #    value: OAUTH2
